@@ -39,9 +39,9 @@ class Brute:
 
     def getBestRoute(self):
         return self.bestRoute
+
     def getBestDist(self):
         return self.bestDist
-
 
     @staticmethod
     def euclidDist(x1, y1, z1, x2, y2, z2):

@@ -13,7 +13,7 @@ def update(frame, ax, cities, brute):
     bestDist = brute.getBestDist()
 
     ax.clear()
-    ax.scatter(cities[:, 0], cities[:, 1], cities[:, 2], c='b', s=50)
+    ax.scatter(cities[:, 0], cities[:, 1], cities[:, 2], c='r', s=50)
     if currRoute is not None:
         ax.plot(currRoute[:, 0], currRoute[:, 1], currRoute[:, 2], color='magenta', linestyle='dashed')
     ax.plot(bestRoute[:, 0], bestRoute[:, 1], bestRoute[:, 2], color='blue', linestyle='solid', linewidth=2)
@@ -32,4 +32,4 @@ def main(numCities=10, maxDist=100):
     plt.show()
 
 
-main(6, 1)
+main(7, 1)
