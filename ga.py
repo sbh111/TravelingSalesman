@@ -51,8 +51,9 @@ class GeneticAlgo:
 
         newPop = []
         for i in self.population:
-            orderA = self.pickOne(self.population, fitness)
-            orderB = self.pickOne(self.population, fitness)
+            orderA = rd.choices(self.population, fitness, k=1)[0]
+            orderB = rd.choices(self.population, fitness, k=1)[0]
+
             crossOrder = self.crossover(orderA, orderB)
             self.mutate(crossOrder, 1)
             newPop.append(crossOrder)
@@ -81,19 +82,6 @@ class GeneticAlgo:
             if i not in newOrder:
                 newOrder.append(i)
         return newOrder
-
-    @staticmethod
-    def pickOne(l, prob):
-        idx = 0
-        r = rd.random()
-        while r > 0:
-            r -= prob[idx]
-            idx += 1
-        idx -= 1
-
-        #choice = rd.choices(l, prob, k=1)
-
-        return l[idx]
 
     def getBestRoute(self):
         return self.bestRoute
