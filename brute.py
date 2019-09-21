@@ -1,6 +1,8 @@
+
 import math
 import numpy as np
 from itertools import permutations
+import random as rd
 
 
 class Brute:
@@ -8,11 +10,12 @@ class Brute:
         self.cities = cities
         self.it = 0
 
-        bestRoute = cities[list(range(0, len(cities)))]
+        bestRoute = cities
         self.bestRoute = np.append(bestRoute, [bestRoute[0]], axis=0)
         self.bestDist = self.totDist(self.bestRoute)
 
         _permutations = list(permutations(range(0, len(cities))))
+        rd.shuffle(_permutations)
         self.permutations = [list(p) for p in _permutations]
         pass
 
@@ -45,7 +48,7 @@ class Brute:
 
     @staticmethod
     def euclidDist(x1, y1, z1, x2, y2, z2):
-        return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2)
+        return (x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2
 
     def totDist(self, points):
         total = 0
