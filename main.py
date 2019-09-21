@@ -28,8 +28,8 @@ def main(numCities=10, maxDist=100):
     fig = plt.figure(figsize=(8, 6))
     ax = p3.Axes3D(fig)
 
-    ani = animation.FuncAnimation(fig, update, fargs=(ax, cities, brute))
+    ani = animation.FuncAnimation(fig, update, fargs=(ax, cities, brute), interval=1)
     plt.show()
 
 
-main(7, 1)
+main(8, 1)
