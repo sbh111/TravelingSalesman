@@ -55,7 +55,7 @@ class GeneticAlgo:
             orderB = rd.choices(self.population, fitness, k=1)[0]
 
             crossOrder = self.crossover(orderA, orderB)
-            self.mutate(crossOrder, 1)
+            self.mutate(crossOrder, 0.5)
             newPop.append(crossOrder)
 
         self.population = newPop
