@@ -40,4 +40,4 @@ def main(numCities=10, maxDist=100):
     plt.show()
 
 
-main(10, 10)
+main(15, 10)
