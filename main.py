@@ -25,14 +25,13 @@ from ga import GeneticAlgo
 
 
 def update(frame, ax, cities, Algo):
-
     # get cycles
     currRoute = Algo.update()
     bestRoute = Algo.getBestRoute()
     bestDist = Algo.getBestDist()
 
     ax.clear()
-    ax.view_init(azim=frame*2)
+    ax.view_init(azim=frame * 2)
 
     name = None
     if type(Algo) == GeneticAlgo:
@@ -49,24 +48,41 @@ def update(frame, ax, cities, Algo):
     ax.plot(bestRoute[:, 0], bestRoute[:, 1], bestRoute[:, 2], color='blue', linestyle='solid', linewidth=2)
 
 
-def main(numCities=10, maxDist=100):
+def main(maxDist=100):
     rd.seed()
+    numCities = 0
+    while True:
+        inp1 = int(input("\nEnter the number of cities:"))
+
+        if inp1 <= 3:
+            print("Number of cities has to be more than 3.")
+            continue
+        numCities = inp1
+        break
+
     cities = [[maxDist * rd.random(), maxDist * rd.random(), maxDist * rd.random()] for i in range(numCities)]
     cities = np.array(cities)
 
     algo = None
 
-    prompt = "\n\nSelect an Algoritm:\n" \
+    prompt = "Select an Algoritm:\n" \
              "0: Brute Force\n" \
              "1: Genetic Algorithm\n"
 
     while True:
-        inp = input(prompt)
+        inp2 = input(prompt)
 
-        if inp is '0':
+        if inp2 is '0':
+
+            if numCities > 10:
+                inp3 = input("It's going to take a while to calculate {} permutations.\n"
+                             "Are you sure you want to do Brute Force Algorithm? (y/n).\n".format(numCities))
+                if inp3 is not 'y' or inp2 is not 'Y':
+                    continue
+            print("Generating permutations, may take a while.\n")
             algo = Brute(cities)
             break
-        elif inp is '1':
+        elif inp2 is '1':
             algo = GeneticAlgo(cities, 200)
             break
         else:
@@ -79,4 +95,4 @@ def main(numCities=10, maxDist=100):
     plt.show()
 
 
-main(10, 10)
+main(10)

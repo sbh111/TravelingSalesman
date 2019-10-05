@@ -55,7 +55,7 @@ class GeneticAlgo:
             orderB = rd.choices(self.population, fitness, k=1)[0]
 
             crossOrder = self.crossover(orderA, orderB)
-            self.mutate(crossOrder, 0.5)
+            self.mutate(crossOrder, .1)
             newPop.append(crossOrder)
 
         self.population = newPop
@@ -66,7 +66,7 @@ class GeneticAlgo:
     @staticmethod
     def mutate(order, mutationRate=0.01):
         for i in range(len(order)):
-            if rd.random() < mutationRate:
+            if rd.uniform(0, 1) < mutationRate:
                 idxA = rd.randint(0, len(order) - 1)
                 idxB = (idxA + 1) % len(order)
                 order[idxA], order[idxB] = order[idxB], order[idxA]
