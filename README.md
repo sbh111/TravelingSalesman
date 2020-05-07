@@ -1,5 +1,5 @@
-# The Traveling Salesman Problem
-The Traveling Salesman Problem is a famous problem in CS. The premise is simple, given a
+# The Travelling Salesman Problem
+The Travelling Salesman Problem is a famous problem in CS. The premise is simple, given a
 list of 'cities' find the best tour/route that visits all of them. It is in the NP-Complete
 Class of problems, meaning there is no polynomial exact solution. The best we can do is
 find optimizations instead of exact solutions. This project explores 2 algorithms to find
